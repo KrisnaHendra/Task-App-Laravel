@@ -69,8 +69,8 @@
     <div class="row">
         <!-- Latest Customers -->
         <div class="col-lg-8 mb-0">
-            <div class="block block-mode-loading-oneui">
-                <div class="block-header border-bottom">
+            <div class="block block-mode-loading-oneui block-bordered">
+                <div class="block-header border-bottom bg-light">
                     <h3 class="block-title"><i class="fa fa-user-friends"></i> Team Performance</h3>
                     <div class="block-options">
                         <button type="button" class="btn-block-option" data-toggle="block-option" data-action="state_toggle" data-action-mode="demo">
@@ -135,8 +135,8 @@
         </div>
         <!-- Project -->
         <div class="col-lg-4">
-          <div class="block block-mode-loading-oneui">
-          <div class="block-header border-bottom">
+          <div class="block block-mode-loading-oneui block-bordered">
+          <div class="block-header border-bottom bg-light">
               <h3 class="block-title"><i class="fa fa-clipboard-list"></i> Our Project</h3>
           </div>
           <div class="block-content block-content-full">

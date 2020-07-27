@@ -49,3 +49,6 @@ Route::get('/laporan','LaporanController@index');
 Route::get('/laporan/cari','LaporanController@cari');
 Route::get('/profile','HomeController@profile')->middleware('auth');
 Route::post('/profile/update','HomeController@updateProfile');
+
+Route::get('/taskPending','ProjectController@taskPending')->middleware('auth');
+Route::get('/updateTaskPending/{id}','ProjectController@updateTaskPending');

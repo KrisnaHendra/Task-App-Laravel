@@ -223,11 +223,17 @@
             </div>
           </div>
           <i class="btn btn-sm btn-block btn-info mb-0 mt-2 pb-0 pt-0"><i class="fa fa-user"></i> Pilih User</i>
-          <select class="selectpicker form-control form-control-sm" name="id_user" data-live-search="true" title="Pilih User...">
+            @if(Auth::user()->role_id == 1)
+            <select class="selectpicker form-control form-control-sm" name="id_user" data-live-search="true" title="Pilih User...">
             @foreach($user as $u)
-            <option data-tokens="{{$u->id}}" value="{{$u->id}}" class="pt-0 pb-0" style="height:28px">{{$u->name}}</option>
+            <option value="{{$u->id}}" class="pt-0 pb-0" style="height:28px">{{$u->name}}</option>
             @endforeach
-          </select>
+            </select>
+            @else
+            <select class="selectpicker form-control form-control-sm" name="id_user" title="Pilih User...">
+            <option value="{{ Auth::user()->id }}" class="pt-0 pb-0" style="height:28px" selected>{{ Auth::user()->name }}</option>
+            </select>
+            @endif
 
           <i class="btn btn-sm btn-block btn-info mb-0 mt-2 pb-0 pt-0"><i class="fa fa-calendar"></i> Pilih Project</i>
           <select class="selectpicker form-control form-control-sm" name="project" data-live-search="true" title="Pilih Project...">

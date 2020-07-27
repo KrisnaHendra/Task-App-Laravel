@@ -94,7 +94,11 @@
                 <div class="content-header bg-white-5">
                     <!-- Logo -->
                     <a class="font-w600 text-dual" href="">
-                        <i class="fa fa-circle-notch text-primary"></i>
+                        @if(Auth::user()->role_id != 1)
+                        <i class="fa fa-circle-notch text-success"></i>
+                        @else
+                        <i class="fa fa-circle-notch text-info"></i>
+                        @endif
                         <span class="smini-hide">
                             <span class="font-w700 font-size-h5">Task</span> <span class="font-w400">Synchronize</span>
                         </span>
@@ -138,7 +142,15 @@
                                 <span class="nav-main-link-name">Laporan Progress</span>
                             </a>
                         </li>
-                        <li class="nav-main-heading">Kerja Sama</li>
+                        @if(Auth::user()->role_id == 1)
+                        <li class="nav-main-item">
+                            <a class="nav-main-link" aria-haspopup="true" aria-expanded="false" href="{{ url('taskPending') }}">
+                                <i class="nav-main-link-icon fa fa-clipboard-list"></i>
+                                <span class="nav-main-link-name">Task Pending</span>
+                            </a>
+                        </li>
+                        @endif
+                        <!-- <li class="nav-main-heading">Kerja Sama</li>
                         <li class="nav-main-item">
                             <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
                                 <i class="nav-main-link-icon si si-energy"></i>
@@ -147,10 +159,10 @@
                             <ul class="nav-main-submenu">
                                 <li class="nav-main-item">
                                     <a class="nav-main-link" href="{{ url('home') }}">
-                                        <span class="nav-main-link-name">Styles</span>
+                                        <span class="nav-main-link-name">Kontrak</span>
                                     </a>
-                                </li>
-                                <li class="nav-main-item">
+                                </li> -->
+                                <!-- <li class="nav-main-item">
                                     <a class="nav-main-link" href="be_blocks_options.html">
                                         <span class="nav-main-link-name">Options</span>
                                     </a>
@@ -169,7 +181,7 @@
                                     <a class="nav-main-link" href="be_blocks_api.html">
                                         <span class="nav-main-link-name">API</span>
                                     </a>
-                                </li>
+                                </li> -->
                             </ul>
                         </li>
 
@@ -182,7 +194,11 @@
             <!-- Header -->
             <header id="page-header">
                 <!-- Header Content -->
-                <div class="content-header bg-primary">
+                @if(Auth::user()->role_id != 1)
+                <div class="content-header bg-success">
+                @else
+                <div class="content-header bg-info">
+                @endif
                     <!-- Left Section -->
                     <div class="d-flex align-items-center">
                         <!-- Toggle Sidebar -->
@@ -240,7 +256,11 @@
                                 <i class="fa fa-fw fa-angle-down d-none d-sm-inline-block"></i>
                             </button>
                             <div class="dropdown-menu dropdown-menu-right p-0 border-0 font-size-sm" aria-labelledby="page-header-user-dropdown">
-                                <div class="p-3 text-center bg-primary">
+                                @if(Auth::user()->role_id != 1)
+                                <div class="p-3 text-center bg-success">
+                                @else
+                                <div class="p-3 text-center bg-info">
+                                @endif
                                     <img class="img-avatar img-avatar48 img-avatar-thumb" src="{{ URL::asset('assets/admin/') }}/assets/media/avatars/avatar10.jpg" alt="">
                                 </div>
                                 <div class="p-2">
@@ -416,7 +436,7 @@
         </div>
         <!-- END Page Container -->
 
-        
+
         <script src="{{ URL::asset('assets/admin/') }}/assets/js/oneui.core.min.js"></script>
 
         <script src="{{ URL::asset('assets/admin/') }}/assets/js/oneui.app.min.js"></script>
@@ -443,6 +463,8 @@
         <script src="{{ URL::asset('assets/admin/') }}/assets/js/plugins/jquery.maskedinput/jquery.maskedinput.min.js"></script>
         <script src="{{ URL::asset('assets/admin/') }}/assets/js/plugins/ion-rangeslider/js/ion.rangeSlider.min.js"></script>
         <script src="{{ URL::asset('assets/admin/') }}/assets/js/plugins/dropzone/dropzone.min.js"></script>
+        <script>jQuery(function(){ One.helpers(['table-tools-checkable', 'table-tools-sections']); });</script>
+
         <!-- Latest compiled and minified JavaScript -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
 

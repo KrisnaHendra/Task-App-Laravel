@@ -24,7 +24,7 @@
                <p class="mb-0"><i class="fa fa-check"></i> {!! session('message') !!}</p>
            </div>
             @endif
-          
+
             @if (Session::has('sweet_alert.alert'))
             <script>
               swal({!! Session::get('sweet_alert.alert') !!});
@@ -36,7 +36,8 @@
                       <tr class="font-weight-bold bg-secondary text-light">
                           <td>#</td>
                           <td>Nama</td>
-                          <td>Dibuat Pada</td>
+                          <td style="width:20%">Dibuat Pada</td>
+                          <td style="width:20%">Dibuat Oleh</td>
                           <td class="text-right">Action</td>
                       </tr>
                   </thead>
@@ -46,14 +47,17 @@
                           <td scope="row">{{ ++$no }}</td>
                           <td>{{ $p->nama }}</td>
                           <td>{{ date('d F Y',$p->created_at) }}</td>
+                          <td>{{ $p->name }}</td>
                           <td class="text-right">
                               <div class="btn-group">
                                   <button type="button" class="btn btn-sm btn-info js-tooltip-enabled pb-0 pt-0" data-toggle="tooltip" title="Update">
                                       <a href="#" data-toggle="modal" data-target="#update{{$p->id}}"><i class="fa fa-fw fa-pencil-alt text-white"></i></a>
                                   </button>
+                                  @if(Auth::user()->role_id == 1)
                                   <button type="button" class="btn btn-sm btn-danger js-tooltip-enabled pb-0 pt-0" data-toggle="tooltip" title="Hapus">
                                       <a href="/project/hapus/{{ $p->id }}" onClick="return confirm('Hapus Project Ini?')"><i class="fa fa-fw fa-times text-white"></i></a>
                                   </button>
+                                  @endif
                               </div>
                           </td>
                       </tr>

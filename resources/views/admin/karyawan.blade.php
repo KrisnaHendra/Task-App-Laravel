@@ -10,7 +10,9 @@
               <h3 class="block-title">Data Karyawan</h3>
               <div class="block-options">
                   <div class="block-options-item">
+                      @if(Auth::user()->role_id == 1)
                       <a href="#" class="btn btn-sm btn-info" data-toggle="modal" data-target="#staticBackdrop"><i class="fa fa-plus"></i></a>
+                      @endif
                   </div>
               </div>
           </div>
